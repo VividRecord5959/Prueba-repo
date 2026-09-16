@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Una historia para ti</title>
+  <title>Para mi niña hermosa</title>
   
-  <!-- Fuentes bonitas de Google Fonts -->
+  <!-- Tipografías elegantes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 
   <style>
-    /* Variables de diseño (puedes cambiar colores aquí) */
     :root {
-      --bg-color: #faf7f2;      /* Fondo suave tipo papel */
-      --card-bg: #ffffff;       /* Fondo de la tarjeta de lectura */
-      --text-color: #2b2b2b;    /* Color del texto legible */
-      --accent: #8b5e3c;        /* Color elegante para detalles/títulos */
-      --border-color: #eae3d9;
+      --bg-cream: #faf6f0;
+      --text-main: #332d29;
+      --text-soft: #63574e;
+      --accent-sage: #8a9a86;
+      --accent-warm: #c48b71;
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --border-subtle: #ebdcd0;
     }
 
     * {
@@ -27,130 +28,333 @@
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background-color: var(--bg-cream);
+      color: var(--text-main);
       font-family: 'Lora', Georgia, serif;
+      line-height: 1.85;
+      font-size: 1.05rem;
+      position: relative;
+      overflow-x: hidden;
       display: flex;
       justify-content: center;
-      padding: 30px 16px 60px 16px;
-      line-height: 1.8;
-      font-size: 1.1rem;
+      padding: 20px 14px 70px 14px;
     }
 
-    .container {
-      max-width: 650px;
+    /* Fondo animado sutil con luciérnagas y polillas */
+    .ambient-particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .firefly {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ecd489;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #f4d06f, 0 0 20px #e8c872;
+      opacity: 0;
+      animation: drift 14s infinite ease-in-out;
+    }
+
+    .firefly:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+    .firefly:nth-child(2) { top: 60%; left: 85%; animation-delay: 3s; }
+    .firefly:nth-child(3) { top: 80%; left: 25%; animation-delay: 6s; }
+    .firefly:nth-child(4) { top: 40%; left: 70%; animation-delay: 2s; }
+    .firefly:nth-child(5) { top: 15%; left: 80%; animation-delay: 5s; }
+
+    @keyframes drift {
+      0% { opacity: 0; transform: translateY(0) scale(0.8); }
+      30% { opacity: 0.8; transform: translateY(-40px) translateX(25px) scale(1.2); }
+      70% { opacity: 0.5; transform: translateY(-90px) translateX(-20px) scale(1); }
+      100% { opacity: 0; transform: translateY(-130px) scale(0.6); }
+    }
+
+    /* Reproductor flotante */
+    .music-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border-subtle);
+      border-radius: 30px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .music-widget:hover {
+      transform: scale(1.03);
+    }
+
+    .music-icon {
+      font-size: 1.2rem;
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(15deg); }
+    }
+
+    .music-text {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
+
+    /* Contenedor tipo carta */
+    .letter-card {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
       width: 100%;
       background: var(--card-bg);
-      padding: 35px 25px;
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-      animation: fadeIn 1.2s ease-in-out;
+      border-radius: 20px;
+      padding: 40px 28px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 15px 45px rgba(110, 85, 70, 0.06);
+      backdrop-filter: blur(4px);
     }
 
-    /* Animación suave al abrir */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .header {
+    .header-tag {
       text-align: center;
-      margin-bottom: 30px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 20px;
-    }
-
-    .header span {
-      text-transform: uppercase;
-      letter-spacing: 3px;
+      font-family: 'Cinzel', serif;
       font-size: 0.75rem;
-      color: var(--accent);
-      font-weight: bold;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent-warm);
+      margin-bottom: 12px;
     }
 
     h1 {
+      text-align: center;
       font-family: 'Cinzel', serif;
-      font-size: 1.9rem;
-      color: #1a1a1a;
-      margin-top: 8px;
+      font-size: 1.8rem;
+      color: #24201d;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    /* Ilustraciones y GIFs estéticos */
+    .visual-spot {
+      text-align: center;
+      margin: 28px 0;
+    }
+
+    .visual-spot img {
+      max-width: 170px;
+      width: 55%;
+      border-radius: 14px;
+      opacity: 0.93;
+      filter: sepia(10%) contrast(95%);
+    }
+
+    .caption {
+      display: block;
+      font-size: 0.78rem;
+      color: #8c7d73;
+      margin-top: 6px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
     }
 
     p {
       margin-bottom: 20px;
       text-align: justify;
-      text-justify: inter-word;
+      color: var(--text-main);
     }
 
-    /* Primera letra decorativa (Capitular) */
-    .primera-letra::first-letter {
+    /* Letra capital editorial */
+    .letra-capital::first-letter {
       font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
       float: left;
-      font-size: 3.4rem;
       line-height: 0.8;
-      padding-top: 4px;
-      padding-right: 10px;
-      padding-bottom: 4px;
-      color: var(--accent);
+      padding: 6px 10px 0 0;
+      color: var(--accent-warm);
     }
 
-    /* Cita o frase destacada */
-    blockquote {
-      margin: 25px 0;
-      padding: 15px 20px;
-      border-left: 3px solid var(--accent);
-      background-color: #fcfbf9;
+    /* Citas emocionales destacadas */
+    .highlight-box {
+      margin: 30px 0;
+      padding: 18px 22px;
+      background: #f4ede4;
+      border-left: 3px solid var(--accent-sage);
+      border-radius: 0 12px 12px 0;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
-      color: #555;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.85rem;
-      color: #888;
+      color: #4b4139;
+      font-size: 1.05rem;
     }
 
     .divider {
       text-align: center;
-      margin: 25px 0;
-      color: var(--accent);
-      font-size: 1.2rem;
+      color: var(--accent-warm);
+      font-size: 1.1rem;
+      letter-spacing: 6px;
+      margin: 32px 0;
+      opacity: 0.6;
+    }
+
+    .closing {
+      margin-top: 35px;
+      padding-top: 25px;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--text-soft);
+      font-size: 1.1rem;
+    }
+
+    /* Ajuste para pantallas pequeñas */
+    @media (max-width: 480px) {
+      .letter-card {
+        padding: 30px 18px;
+      }
+      h1 {
+        font-size: 1.6rem;
+      }
+      p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header class="header">
-      <span>Capítulo Especial</span>
-      <h1>El Título de tu Texto</h1>
-    </header>
+  <!-- Luciérnagas flotantes -->
+  <div class="ambient-particles">
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+    <div class="firefly"></div>
+  </div>
+
+  <!-- Reproductor flotante (Silvana Estrada - Se me ocurre) -->
+  <div class="music-widget" onclick="toggleAudio()">
+    <span class="music-icon" id="playIcon">🎵</span>
+    <span class="music-text" id="playLabel">Escuchar con música</span>
+  </div>
+
+  <!-- Audio oficial (YouTube audio stream / embed controlado) -->
+  <audio id="bgSong" loop preload="auto">
+    <source src="https://ia801503.us.archive.org/15/items/silvana-estrada-se-me-ocurre/se-me-ocurre.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="letter-card">
+    
+    <div class="header-tag">Para ti • Con el corazón</div>
+    <h1>Hola, mi niña</h1>
+
+    <div class="visual-spot">
+      <!-- Ilustración Snoopy y flores -->
+      <img src="https://media.giphy.com/media/l41JRsph73VokN6ik/giphy.gif" alt="Snoopy abrazo">
+    </div>
 
     <article>
-      <p class="primera-letra">
-        Había una vez un texto que empezaba aquí. Puedes reemplazar todo esto por tu propia historia, carta o poema. La tipografía serif hace que leer en pantallas móviles sea agradable y descanse la vista.
+      <p class="letra-capital">
+        Decidí escribirte por este medio, no porque se me hayan acabado las ideas, sino porque sé que es el más adecuado para este tipo de mensaje. Igual te escribo por este silencio que decidiste poner entre los dos. Y no vengo a forzar ningún asunto ni tampoco procuro invadir tu espacio. Sé que estás molesta, sé que estás cansada de mí y entiendo, en verdad, perfectamente por qué pusiste este alto o esta distancia entre nosotros dos. No quería quedarme con todos estos sentimientos atorados mientras esta distancia cada vez se hace más grande. Quiero expresar con palabras lo que en verdad siento cuando mi cabeza no reacciona por impulso.
+      </p>
+
+      <div class="divider">🌿 ✦ 🌿</div>
+
+      <p>
+        Vivir en CDMX puede ser un asunto frío y solitario hasta la fecha. Antes de ti, llegar a la ciudad era prácticamente una rutina de escuela y trabajo, pero esto cambió desde que llegaste tú, cuando estudiabas para sobrecargo y tenías que vivir aquí. Todo empezó por una conexión y no por coincidencia, y gracias a eso, la CDMX se volvió una gran marca y un gran patio de actividades entre nosotros dos. Como cuando fuimos al Castillo de Chapultepec, usamos tu camarita y tomamos fotos; cuando fuimos a la expo inmersiva en el Parque Bicentenario; o cuando fuimos a comer al lugar con temática de Studio Ghibli, o nuestra primera cita en la Torre Latino. Y todo esto porque sabía lo mucho que te encantaría.
+      </p>
+
+      <div class="visual-spot">
+        <!-- Detalle Studio Ghibli / Viaje de Chihiro / Naturaleza -->
+        <img src="https://media.giphy.com/media/yeN2s44mdgO52/giphy.gif" alt="Ghibli naturaleza">
+        <span class="caption">"Hacer de la ciudad un lugar cálido gracias a ti"</span>
+      </div>
+
+      <p>
+        Me encanta recorrer y andar por la ciudad contigo, subirnos al metro e ir cantando entre la gente sin que nos importara nada más que nosotros, ver cómo te asombra, así sea la cosa más insignificante que tenga vida, tus manualidades hermosas que tanto me encantan, tu ternura de ser tan única. Mi niña hermosa. En cada abrazo y en cómo te preocupabas por mí, en serio encontré un refugio que nunca había tenido.
       </p>
 
       <p>
-        Puedes añadir tantos párrafos como quieras. Se adapta perfectamente al ancho del celular sin que las letras se vean diminutas ni gigantes.
+        Por eso mismo, cada detalle que busqué darte lleva un cacho enorme de mi corazón. Desde la travesía que fue conseguir tu camarita vintage para que capturaras el mundo como tú lo ves con esos ojos tan hermosos, hasta cada plan que imaginé para ti. Dejando un poco de lado eso, tú siempre me llamaste y me sigues diciendo tibio, que no doy nada y que no hago nada. Me duele en el alma porque por dentro yo no pensaba ni pienso en otra cosa que en cómo hacerte feliz, y cuando deseaba y llevaba por dentro que fuéramos novios y cómo sería, quería que fuera inolvidable. Planeando el vuelo en globo, con todo listo, desayuno y actividades, o al preparar un viaje a los campos de cempasúchil y flores para la temporada de Día de Muertos, entre otros planes más. Y algo de lo que no quito el dedo del renglón es de la idea de llevarte al santuario de las luciérnagas porque sé lo mucho que te ilusiona. He querido y siempre quiero que todo fuera perfecto para ti antes de pensar en mí.
       </p>
 
-      <blockquote>
-        "Las mejores palabras son aquellas que se leen con calma."
-      </blockquote>
+      <div class="highlight-box">
+        "Pero la realidad creo que nos fue ganando. Esos planes que, por desgracia, se iban cancelando una y otra vez entre fechas que no nos cuadraban, pero sobre todo por quizá las dudas, las discusiones y la desconfianza que nos empezó a afectar."
+      </div>
 
       <p>
-        Aquí puedes continuar con el desenlace o la conclusión de lo que quieras contar.
+        Y aquí es donde tengo que asumir mi parte con total honestidad. Te pido una disculpa grande y sincera por la persona en la que me convertía cuando me ganaba el enojo. Me da coraje conmigo mismo y vergüenza recordar cómo reaccioné este fin de semana y en tantas otras ocasiones, cayendo en comentarios malos, comentarios pasivo-agresivos e insinuando cosas horribles, como que siempre tienes a alguien o te refugias en ese alguien. Quizá no lo creas, pero sé lo hiriente que es sentirse juzgado, interrogado o vigilado por una persona. Bien sabes lo mucho que soy celoso, y esos mismos celos y mi impotencia hablaron lo que no debieron. No hay excusa para nada por haberte tratado así.
+      </p>
+
+      <div class="visual-spot">
+        <!-- Polilla lunar / Silencio nocturno -->
+        <img src="https://media.giphy.com/media/26AHpM8e21i8VwLp6/giphy.gif" alt="Polilla y luz">
+      </div>
+
+      <p>
+        La verdad más dolorosa es que me sentía atrapado en un laberinto sin salida. Me muero de ganas de dar ese paso definitivo contigo, pero cada vez que sentía secretos, planes que se me ocultaron y que hasta la fecha se siguen ocultando, incluyendo esa falta de límites que en su momento no se pusieron con tu amigo, mientras yo dejaba amistades enteras de lado solo para que tú te sintieras tranquila, sentía que todo se me caía. Me daba pánico lanzarme sin saber que tú estabas lista para poder acceder a eso que quizá en su momento yo pidiera. Entramos en una guerra de desgaste donde tú no ibas a actuar hasta que yo lo hiciera, y yo no me atrevía a actuar porque sentía que no tenía certezas sobre ciertas cosas de tu parte. En este juego nos fuimos rompiendo los dos, más por mi culpa, lo admito.
+      </p>
+
+      <p>
+        No te escribo todo esto para pedirte que hagas como si nada hubiera pasado. Tampoco espero que me contestes de inmediato, ni pretendo condicionarte porque aún no soy nada para ti. Solo necesitaba que supieras que reconozco cada uno de mis errores, que sé perfectamente lo que tengo por sanar y cambiar en mí, y que el amor que siento por ti no ha cambiado ni un milímetro.
       </p>
 
       <div class="divider">✦ ✦ ✦</div>
+
+      <p>
+        Te amo de verdad, mi niña pequeña y hermosa. Y precisamente porque te amo, sé que, si esta historia todavía tiene capítulos por escribir, no puede ser para regresar al mismo círculo de reclamos, secretos y desconfianza. Y yo estoy más que puesto, pero si tú decides volver a intentarlo, haremos un trato real y mutuo, donde los acuerdos se cumplan de ambas partes, donde la honestidad no sea negociable y donde la tranquilidad y el respeto para ambos valgan más que cualquier orgullo o miedo.
+      </p>
+
+      <p>
+        No quiero hacer este texto más largo, pero solo quiero decirte de nuevo que te amo mucho, que me encanta compartir la vida contigo y ver las cosas brillar a través de tus ojos.
+      </p>
+
+      <div class="closing">
+        La puerta queda entreabierta, pero el tiempo y la decisión están completamente en tus manos.<br><br>
+        <strong>Ojalá estés bien, mi princesa.</strong>
+      </div>
     </article>
 
-    <footer class="footer">
-      Escrito con cariño • 2026
-    </footer>
   </div>
+
+  <script>
+    // Control de audio suave
+    const song = document.getElementById('bgSong');
+    const playIcon = document.getElementById('playIcon');
+    const playLabel = document.getElementById('playLabel');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (!isPlaying) {
+        song.play().then(() => {
+          isPlaying = true;
+          playIcon.textContent = '⏸';
+          playLabel.textContent = 'Silvana Estrada';
+        }).catch(() => {
+          // Bloqueo de reproducción automática del navegador
+        });
+      } else {
+        song.pause();
+        isPlaying = false;
+        playIcon.textContent = '🎵';
+        playLabel.textContent = 'Escuchar con música';
+      }
+    }
+  </script>
 
 </body>
 </html>
