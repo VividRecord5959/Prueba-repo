@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Una historia para ti</title>
+  
+  <!-- Fuentes bonitas de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* Variables de diseño (puedes cambiar colores aquí) */
+    :root {
+      --bg-color: #faf7f2;      /* Fondo suave tipo papel */
+      --card-bg: #ffffff;       /* Fondo de la tarjeta de lectura */
+      --text-color: #2b2b2b;    /* Color del texto legible */
+      --accent: #8b5e3c;        /* Color elegante para detalles/títulos */
+      --border-color: #eae3d9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Lora', Georgia, serif;
+      display: flex;
+      justify-content: center;
+      padding: 30px 16px 60px 16px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+    }
+
+    .container {
+      max-width: 650px;
+      width: 100%;
+      background: var(--card-bg);
+      padding: 35px 25px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    /* Animación suave al abrir */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
+    }
+
+    .header span {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.9rem;
+      color: #1a1a1a;
+      margin-top: 8px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    /* Primera letra decorativa (Capitular) */
+    .primera-letra::first-letter {
+      font-family: 'Cinzel', serif;
+      float: left;
+      font-size: 3.4rem;
+      line-height: 0.8;
+      padding-top: 4px;
+      padding-right: 10px;
+      padding-bottom: 4px;
+      color: var(--accent);
+    }
+
+    /* Cita o frase destacada */
+    blockquote {
+      margin: 25px 0;
+      padding: 15px 20px;
+      border-left: 3px solid var(--accent);
+      background-color: #fcfbf9;
+      font-style: italic;
+      color: #555;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 25px 0;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="header">
+      <span>Capítulo Especial</span>
+      <h1>El Título de tu Texto</h1>
+    </header>
+
+    <article>
+      <p class="primera-letra">
+        Había una vez un texto que empezaba aquí. Puedes reemplazar todo esto por tu propia historia, carta o poema. La tipografía serif hace que leer en pantallas móviles sea agradable y descanse la vista.
+      </p>
+
+      <p>
+        Puedes añadir tantos párrafos como quieras. Se adapta perfectamente al ancho del celular sin que las letras se vean diminutas ni gigantes.
+      </p>
+
+      <blockquote>
+        "Las mejores palabras son aquellas que se leen con calma."
+      </blockquote>
+
+      <p>
+        Aquí puedes continuar con el desenlace o la conclusión de lo que quieras contar.
+      </p>
+
+      <div class="divider">✦ ✦ ✦</div>
+    </article>
+
+    <footer class="footer">
+      Escrito con cariño • 2026
+    </footer>
+  </div>
+
+</body>
+</html>
