@@ -26,7 +26,7 @@
       background-color: #24221f;
     }
 
-    /* Contenedor principal responsive */
+    /* Contenedor tipo pantalla de celular */
     #book-container {
       position: relative;
       width: 100%;
@@ -38,7 +38,7 @@
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
     }
 
-    /* Fondo de mariposas */
+    /* Mariposas flotantes de fondo */
     .butterfly-layer {
       position: absolute;
       top: 0;
@@ -46,7 +46,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 5;
+      z-index: 10;
       overflow: hidden;
     }
 
@@ -87,7 +87,7 @@
       }
     }
 
-    /* Estructura de cada página */
+    /* Estructura de páginas */
     .page {
       position: absolute;
       top: 0;
@@ -96,7 +96,7 @@
       height: 100%;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      transition: opacity 0.45s ease-in-out, transform 0.45s ease-in-out;
       transform: scale(0.98);
       z-index: 1;
       background-size: cover;
@@ -104,7 +104,7 @@
       background-repeat: no-repeat;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      padding: 45px 26px 95px 26px; /* Espacio inferior para no tapar contenido con el botón */
+      padding: 50px 26px 130px 26px; /* 130px de fondo para que el botón fijo jamás tape el texto */
     }
 
     .page.active {
@@ -121,14 +121,14 @@
       justify-content: center;
       align-items: center;
       gap: 35px;
-      padding-bottom: 45px;
+      padding-bottom: 90px;
     }
 
     .vintage-bg {
       background-image: url('Fondo%20vintage.png');
     }
 
-    /* Tipografías */
+    /* Textos caligráficos */
     .font-script-title {
       font-family: 'Great Vibes', cursive;
       color: #1a1715;
@@ -147,8 +147,8 @@
 
     .text-caligrafico {
       font-family: 'Alex Brush', cursive;
-      font-size: 1.8rem;
-      line-height: 1.48;
+      font-size: 1.85rem;
+      line-height: 1.5;
       color: #1c1815;
       text-align: center;
       text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
@@ -159,12 +159,12 @@
       margin: 10px 0;
     }
 
-    /* GIFs con marco estético */
+    /* GIFs con marco */
     .gif-frame {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 22px 0 10px 0;
+      margin: 25px 0 15px 0;
     }
 
     .gif-frame img {
@@ -191,7 +191,7 @@
       border-radius: 14px;
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
       display: block;
-      margin: 20px auto 10px auto;
+      margin: 25px auto 15px auto;
       transition: transform 0.25s ease;
     }
 
@@ -214,7 +214,7 @@
       flex-direction: column;
       align-items: center;
       gap: 16px;
-      margin: 20px 0;
+      margin: 20px auto;
       width: 100%;
     }
 
@@ -225,23 +225,22 @@
       width: 100%;
     }
 
-    .polaroid-row img,
-    .polaroid-bottom img {
-      width: 44%;
-      max-width: 155px;
+    .polaroid-item {
+      width: 46%;
+      max-width: 165px;
       height: auto;
-      object-fit: contain;
+      display: block;
       border-radius: 4px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
     }
 
-    /* GIFs Página 13 */
+    /* Disposición doble GIF en Página 13 */
     .ponyo-container {
       display: flex;
       flex-direction: column;
       gap: 14px;
       width: 100%;
-      margin: 18px 0;
+      margin: 20px 0;
     }
 
     .ponyo-left {
@@ -260,31 +259,31 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.14);
     }
 
-    /* Botón flotante estilizado para cambio de página */
-    .nav-floating-btn {
+    /* BOTÓN GLOBAL FIJO EN LA ESQUINA INFERIOR DERECHA */
+    #globalNextBtn {
       position: absolute;
       bottom: 22px;
       right: 22px;
-      z-index: 20;
-      background: rgba(255, 252, 245, 0.88);
-      border: 1px solid rgba(175, 150, 120, 0.6);
+      z-index: 99;
+      background: rgba(255, 252, 245, 0.94);
+      border: 1px solid rgba(175, 150, 120, 0.7);
       color: #3d332a;
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 0.95rem;
       letter-spacing: 0.5px;
-      padding: 10px 18px;
+      padding: 10px 20px;
       border-radius: 30px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.16);
-      backdrop-filter: blur(5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(6px);
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: transform 0.2s ease, opacity 0.3s ease;
     }
 
-    .nav-floating-btn:active {
+    #globalNextBtn:active {
       transform: scale(0.92);
       background: #fff;
     }
@@ -298,7 +297,7 @@
       color: #38302b;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      padding: 12px 26px;
+      padding: 12px 28px;
       border-radius: 30px;
       font-size: 1rem;
       cursor: pointer;
@@ -313,15 +312,18 @@
 </head>
 <body>
 
-  <!-- Audio de fondo continuo -->
+  <!-- Audio continuo -->
   <audio id="bgSong" loop preload="auto">
     <source src="Se%20Me%20Ocurre.mp3" type="audio/mpeg">
   </audio>
 
   <div id="book-container">
 
-    <!-- Capa de mariposas flotantes -->
+    <!-- Mariposas -->
     <div class="butterfly-layer" id="butterflies"></div>
+
+    <!-- BOTÓN FIJO PERMANENTE -->
+    <button id="globalNextBtn" onclick="nextPage()">Siguiente &rarr;</button>
 
     <!-- PÁGINA 1 -->
     <section class="page page-1 active" id="p1">
@@ -331,8 +333,6 @@
       </div>
 
       <img src="polillas.gif" alt="Polillas" class="gif-polillas">
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 2 -->
@@ -344,20 +344,16 @@
       </div>
 
       <img src="Play%20Canci%C3%B3n%20Foto.jpg" alt="Reproductor" class="music-card" id="musicPlayerBtn" onclick="toggleAudio()">
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 3 -->
     <section class="page vintage-bg" id="p3">
       <div class="text-container">
-        <p class="text-caligrafico" style="font-size: 2.2rem; margin-bottom: 12px;">Hola, mi niña.</p>
+        <p class="text-caligrafico" style="font-size: 2.2rem; margin-bottom: 14px;">Hola, mi niña.</p>
         <p class="text-caligrafico">
           Decidí hacerte este pequeño detalle, no porque se me hayan acabado las ideas, sino porque sé que es el más adecuado para este tipo de mensaje y sumando que puede ser algo que te guste. Igual te escribo por este silencio que decidiste poner entre los dos. Y no vengo a forzar ningún asunto ni tampoco procuro invadir tu espacio. Sé que estás molesta, sé que estás cansada de mí y entiendo, en verdad, perfectamente por qué pusiste este alto o esta distancia entre nosotros dos. No quería quedarme con todos estos sentimientos atorados mientras esta distancia cada vez se hace más grande. Quiero expresar con palabras lo que en verdad siento cuando mi cabeza no reacciona por impulso.
         </p>
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 4 -->
@@ -367,8 +363,6 @@
           Vivir en CDMX puede ser un asunto frío y solitario hasta la fecha. Antes de ti, llegar a la ciudad era prácticamente una rutina de escuela y trabajo, pero esto cambió desde que llegaste tú, cuando estudiabas para sobrecargo y tenías que vivir aquí. Todo empezó por una conexión y no por coincidencia, y gracias a eso, la CDMX se volvió una gran marca y un gran patio de actividades entre nosotros dos. Como cuando fuimos al Castillo de Chapultepec, usamos tu camarita y tomamos fotos; cuando fuimos a la expo inmersiva en el Parque Bicentenario; o cuando fuimos a comer al lugar con temática de Studio Ghibli, o nuestra primera cita en la Torre Latino. Y todo esto porque sabía lo mucho que te encantaría.
         </p>
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 5 -->
@@ -381,15 +375,11 @@
 
       <div class="polaroid-grid">
         <div class="polaroid-row">
-          <img src="Pol%201.jpg" alt="Recuerdo 1">
-          <img src="Pol%202.jpg" alt="Recuerdo 2">
+          <img src="Pol%201.jpg" alt="Recuerdo 1" class="polaroid-item">
+          <img src="Pol%202.jpg" alt="Recuerdo 2" class="polaroid-item">
         </div>
-        <div class="polaroid-bottom">
-          <img src="Pol%203.jpg" alt="Recuerdo 3">
-        </div>
+        <img src="Pol%203.jpg" alt="Recuerdo 3" class="polaroid-item">
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 6 -->
@@ -403,8 +393,6 @@
       <div class="gif-frame">
         <img src="Gif%20entrega%20rosa.gif" alt="Entrega rosa">
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 7 -->
@@ -418,8 +406,6 @@
       <div class="gif-frame">
         <img src="Gif%20luciernagas.gif" alt="Luciérnagas">
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 8 -->
@@ -433,8 +419,6 @@
       <div class="gif-frame">
         <img src="Gif%20snoopy%20lluvia.gif" alt="Snoopy lluvia">
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 9 -->
@@ -448,8 +432,6 @@
       <div class="gif-frame">
         <img src="Gif%20chimenea.gif" alt="Chimenea">
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 10 -->
@@ -459,8 +441,6 @@
           La verdad más dolorosa es que me sentía atrapado en un laberinto sin salida. Me muero de ganas de dar ese paso definitivo contigo, pero cada vez que sentía secretos, planes que se me ocultaron y que hasta la fecha se siguen ocultando, incluyendo esa falta de límites que en su momento no se pusieron con tu amigo, mientras yo dejaba amistades enteras de lado solo para que tú te sintieras tranquila, sentía que todo se me caía. Me daba pánico lanzarme sin saber que tú estabas lista para poder acceder a eso que quizá en su momento yo pidiera. Entramos en una guerra de desgaste donde tú no ibas a actuar hasta que yo lo hiciera, y yo no me atrevía a actuar porque sentía que no tenía certezas sobre ciertas cosas de tu parte. En este juego nos fuimos rompiendo los dos, más por mi culpa, lo admito.
         </p>
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 11 -->
@@ -474,8 +454,6 @@
       <div class="gif-frame">
         <img src="Gif%20totoro.gif" alt="Totoro">
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 12 -->
@@ -489,14 +467,12 @@
       <div class="gif-frame">
         <img src="Gif%20dragon.gif" alt="Dragón">
       </div>
-
-      <button class="nav-floating-btn" onclick="nextPage()">Siguiente &rarr;</button>
     </section>
 
     <!-- PÁGINA 13 (FINAL) -->
     <section class="page vintage-bg" id="p13">
       <div class="text-container">
-        <p class="text-caligrafico" style="margin-bottom: 12px;">
+        <p class="text-caligrafico" style="margin-bottom: 14px;">
           No quiero hacer este texto más largo, pero solo quiero decirte de nuevo que te amo mucho, que me encanta compartir la vida contigo y ver las cosas brillar a través de tus ojos.
         </p>
         <p class="text-caligrafico">
@@ -517,6 +493,18 @@
   <script>
     let currentPageNum = 1;
     const totalPages = 13;
+    const globalNextBtn = document.getElementById('globalNextBtn');
+
+    function updateNavButton() {
+      // En la última página ocultamos el botón "Siguiente" para dar lugar al botón de reinicio
+      if (currentPageNum === totalPages) {
+        globalNextBtn.style.opacity = '0';
+        globalNextBtn.style.pointerEvents = 'none';
+      } else {
+        globalNextBtn.style.opacity = '1';
+        globalNextBtn.style.pointerEvents = 'auto';
+      }
+    }
 
     function goToPage(pageNumber) {
       const current = document.getElementById('p' + currentPageNum);
@@ -525,8 +513,9 @@
       if (current && target) {
         current.classList.remove('active');
         target.classList.add('active');
-        target.scrollTop = 0;
+        target.scrollTop = 0; // Regresa el scroll al inicio de la hoja
         currentPageNum = pageNumber;
+        updateNavButton();
       }
     }
 
@@ -536,7 +525,7 @@
       }
     }
 
-    // Audio
+    // Audio de fondo continuo
     const song = document.getElementById('bgSong');
     const playerCard = document.getElementById('musicPlayerBtn');
     let isPlaying = false;
@@ -547,7 +536,7 @@
           isPlaying = true;
           playerCard.classList.add('playing-pulse');
         }).catch(err => {
-          console.log("Reproducción pausada:", err);
+          console.log("Audio pausado por el navegador:", err);
         });
       } else {
         song.pause();
@@ -556,7 +545,7 @@
       }
     }
 
-    // Generador dinámico de mariposas
+    // Generador de mariposas
     const butterflyLayer = document.getElementById('butterflies');
     const butterflySVG = `
       <svg viewBox="0 0 24 24">
@@ -569,10 +558,9 @@
       b.className = 'butterfly';
       b.innerHTML = butterflySVG;
 
-      // Trayectorias y velocidades aleatorias
       const startX = Math.random() * 80;
-      const duration = 12 + Math.random() * 8;
-      const delay = Math.random() * 3;
+      const duration = 11 + Math.random() * 8;
+      const delay = Math.random() * 2;
       const scale = 0.5 + Math.random() * 0.5;
 
       b.style.left = startX + '%';
@@ -587,11 +575,12 @@
       }, (duration + delay) * 1000);
     }
 
-    // Generar mariposas de forma constante
     for (let i = 0; i < 4; i++) {
       createButterfly();
     }
     setInterval(createButterfly, 3500);
+
+    updateNavButton();
   </script>
 
 </body>
